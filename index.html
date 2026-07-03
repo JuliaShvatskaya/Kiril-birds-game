@@ -7,11 +7,45 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="game-shell" aria-label="Parrot Jump game">
-    <h1>Parrot Jump</h1>
-    <canvas id="gameCanvas" width="800" height="500" aria-label="Parrot Jump canvas"></canvas>
-    <p class="controls">Space: start / jump · Enter: restart after Game Over</p>
-  </main>
+  <canvas id="gameCanvas" aria-label="Parrot Jump canvas"></canvas>
+
+  <div class="hud" aria-live="polite">
+    <span id="scoreLabel">Score: 0</span>
+    <span id="timeLabel">Time: 00:00</span>
+    <span id="gemsLabel">💎 Gems: 0</span>
+    <span id="bestLabel">Best: 0</span>
+  </div>
+
+  <div class="top-actions">
+    <button id="shopButton" type="button">Shop</button>
+    <button id="leaderboardButton" type="button">Leaderboard</button>
+    <button id="fullscreenButton" type="button">Fullscreen</button>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="assertive"></div>
+
+  <div id="shopOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="shopTitle">
+    <div class="panel">
+      <button class="close-button" id="shopCloseButton" type="button" aria-label="Close shop">×</button>
+      <h2 id="shopTitle">Character Shop</h2>
+      <p id="shopMessage" class="panel-message"></p>
+      <div id="shopGrid" class="shop-grid"></div>
+    </div>
+  </div>
+
+  <div id="leaderboardOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="leaderboardTitle">
+    <div class="panel leaderboard-panel">
+      <button class="close-button" id="leaderboardCloseButton" type="button" aria-label="Close leaderboard">×</button>
+      <h2 id="leaderboardTitle">Leaderboard</h2>
+      <p id="leaderboardSeason" class="panel-message"></p>
+      <div id="leaderboardList" class="leaderboard-list"></div>
+    </div>
+  </div>
+
+  <div id="gameOverForm" class="game-over-form hidden">
+    <label for="playerNameInput">Name</label>
+    <input id="playerNameInput" type="text" maxlength="16" autocomplete="off" placeholder="Player">
+  </div>
 
   <script src="game.js"></script>
 </body>
